@@ -4,6 +4,5 @@
 
 ln -sf -T `pwd`/.vimrc ~/.vimrc
 ln -sf -T `pwd`/.gvimrc ~/.gvimrc
-mkdir ~/.vim/tmp
 touch ~/.vim/abbreviate.vim
 

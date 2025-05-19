@@ -138,7 +138,11 @@ set noundofile
 
 " + Swap file {{{2
 " ------------------------------------------------------------------------------
-set directory=~/.vim/tmp
+if !isdirectory($HOME . "/.vim/swap")
+  call mkdir($HOME . "/.vim/swap", "p")
+endif
+
+set directory^=$HOME/.vim/swap//
 
 " + Runtime path {{{2
 " ------------------------------------------------------------------------------
