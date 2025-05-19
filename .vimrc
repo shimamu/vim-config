@@ -6,30 +6,28 @@ scriptencoding utf-8
 set encoding=utf-8
 set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " }}}
-" Vundle plugins {{{1
+" Plugins {{{1
 " ==============================================================================
 " + Pre-process {{{2
 " ------------------------------------------------------------------------------
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Using vim-plug as the plugin manager.
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-
-" Keep Plugin commands between vundle#begin/end.
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" Keep Plugin commands between plug#begin/end.
+call plug#begin()
 
 " + Plugins {{{2
 " ------------------------------------------------------------------------------
 " ++ Plugins for markdown {{{3
 " ------------------------------------------------------------------------------
-Plugin 'godlygeek/tabular'
-Plugin 'kannokanno/previm'
-Plugin 'tyru/open-browser.vim'
-Plugin 'shimamu/vim-markdown-assist'
+Plug 'godlygeek/tabular'
+Plug 'kannokanno/previm'
+Plug 'tyru/open-browser.vim'
+Plug 'shimamu/vim-markdown-assist'
 if has('win32')
   let g:previm_disable_default_css = 1
   let g:previm_custom_css_path = '~/.vim/css/markdown.css'
@@ -37,7 +35,7 @@ endif
 
 " ++ Plugin for configurable status line {{{3
 " ------------------------------------------------------------------------------
-Plugin 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
@@ -53,7 +51,7 @@ endfunction
 
 " ++ Plugin for controling Input Method {{{3
 " ------------------------------------------------------------------------------
-Plugin 'fuenor/im_control.vim'
+Plug 'fuenor/im_control.vim'
 if has('win32')
   " Action mode for 'Japanese input fixed mode'
   let IM_CtrlMode = 4
@@ -78,21 +76,21 @@ endif
 
 " ++ Plugin for file system explorer {{{3
 " ------------------------------------------------------------------------------
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 " Customize <CR> to remain in tree window after opening.
 let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
 
 " ++ Plugin for tagbar {{{3
 " ------------------------------------------------------------------------------
-Plugin 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar'
 
 " ++ Plugin for an interface to WEB APIs. {{{3
 " ------------------------------------------------------------------------------
-Plugin 'mattn/webapi-vim'
+Plug 'mattn/webapi-vim'
 
 " ++ Plugin for extended f, F, t and T key mappings. {{{3
 " ------------------------------------------------------------------------------
-Plugin 'rhysd/clever-f.vim'
+Plug 'rhysd/clever-f.vim'
 let g:clever_f_across_no_line=1
 let g:clever_f_smart_case=1
 let g:clever_f_use_migemo=1
@@ -102,16 +100,15 @@ map , <Plug>(clever-f-repeat-back)
 
 " ++ Plugin for automatically close parenthese (), {}, "",... {{{3
 " ------------------------------------------------------------------------------
-Plugin 'cohama/lexima.vim'
+Plug 'cohama/lexima.vim'
 
 " ++ Plugin for colorscheme {{{3
-Plugin 'crusoexia/vim-monokai'
+Plug 'crusoexia/vim-monokai'
 " }}}
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 
 " General {{{1
