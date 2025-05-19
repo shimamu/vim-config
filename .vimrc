@@ -153,7 +153,8 @@ endif
 
 " + Abbreviate {{{2
 " ------------------------------------------------------------------------------
-source ~/.vim/abbreviate.vim
+"source ~/.vim/abbreviate.vim
+:ab cooklecurry@ cooklecurry@gmail.com
 
 " + Backspace {{{2
 " ------------------------------------------------------------------------------
