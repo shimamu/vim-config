@@ -279,7 +279,11 @@ au BufNewFile,BufRead *.css,*.scss  set nowrap tabstop=2 shiftwidth=2
 
 " + Javascript {{{2
 " ------------------------------------------------------------------------------
-au BufNewFile,BufRead *.js  noremap <silent> = :Autoformat<CR>
+augroup javascript_settings
+  autocmd!
+  autocmd BufNewFile,BufRead *.js set nowrap tabstop=2 shiftwidth=2
+  autocmd BufNewFile,BufRead *.js noremap <silent> = :Autoformat<CR>
+augroup END
 
 " + Markdown {{{2
 " ------------------------------------------------------------------------------
