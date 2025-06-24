@@ -103,7 +103,13 @@ map , <Plug>(clever-f-repeat-back)
 Plug 'cohama/lexima.vim'
 
 " ++ Plugin for colorscheme {{{3
+" ------------------------------------------------------------------------------
 Plug 'crusoexia/vim-monokai'
+
+" ++ Plugin for autoformat {{{3
+" ------------------------------------------------------------------------------
+Plug 'vim-autoformat/vim-autoformat'
+
 " }}}
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
