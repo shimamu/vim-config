@@ -110,6 +110,20 @@ Plug 'crusoexia/vim-monokai'
 " ------------------------------------------------------------------------------
 Plug 'vim-autoformat/vim-autoformat'
 
+" ++ Plugin for ESLint {{{3
+" ------------------------------------------------------------------------------
+Plug 'dense-analysis/ale'
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\}
+let g:ale_fix_on_save = 1
+let g:ale_set_quickfix = 1
+
 " }}}
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
@@ -269,6 +283,7 @@ nnoremap <silent> <SPACE> o<ESC>
 
 " Filetypes {{{1
 " ==============================================================================
+autocmd FileType * noremap <buffer> <silent> = :Autoformat<CR>
 " + HTML {{{2
 " ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.html  set nowrap tabstop=2 shiftwidth=2
@@ -281,8 +296,8 @@ au BufNewFile,BufRead *.css,*.scss  set nowrap tabstop=2 shiftwidth=2
 " ------------------------------------------------------------------------------
 augroup javascript_settings
   autocmd!
-  autocmd BufNewFile,BufRead *.js set nowrap tabstop=2 shiftwidth=2
-  autocmd BufNewFile,BufRead *.js noremap <silent> = :Autoformat<CR>
+  autocmd FileType javascript set nowrap tabstop=2 shiftwidth=2
+  autocmd FileType javascript noremap <buffer> <silent> = :ALEFix<CR>
 augroup END
 
 " + Markdown {{{2
