@@ -124,6 +124,10 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 1
 let g:ale_set_quickfix = 1
 
+" ++ Plugin for toggle comments on and off {{{3
+" ------------------------------------------------------------------------------
+Plug 'tpope/vim-commentary'
+
 " }}}
 " + Post-process {{{2
 " ------------------------------------------------------------------------------
