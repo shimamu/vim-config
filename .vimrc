@@ -74,6 +74,8 @@ elseif has('unix')
   endfunction
 endif
 
+Plug 'lilydjwg/fcitx.vim'
+
 " ++ Plugin for file system explorer {{{3
 " ------------------------------------------------------------------------------
 Plug 'scrooloose/nerdtree'
