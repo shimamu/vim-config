@@ -79,6 +79,8 @@ endif
 Plug 'scrooloose/nerdtree'
 " Customize <CR> to remain in tree window after opening.
 let NERDTreeCustomOpenArgs={'file': {'where': 'p', 'stay': 1}, 'dir': {}}
+let g:NERDTreeWinPos = "top"
+let g:NERDTreeWinSize = 17
 
 " ++ Plugin for tagbar {{{3
 " ------------------------------------------------------------------------------
@@ -288,6 +290,9 @@ nnoremap <silent> <C-l> :noh<CR><C-l>
 " Begin a new line below the cursor.
 nnoremap <silent> <SPACE> o<ESC>
 
+" Visual mode: copy selection to Wayland clipboard
+vnoremap <C-c> :w !wl-copy<CR><CR>
+
 
 " Filetypes {{{1
 " ==============================================================================
@@ -335,3 +340,9 @@ let g:tagbar_type_markdown = {
 " ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 
+" Local configuration {{{1
+let s:local_vimrc = expand('~/.vim/.vimrc.local')
+
+if filereadable(s:local_vimrc)
+  execute 'source' fnameescape(s:local_vimrc)
+endif
