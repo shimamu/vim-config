@@ -1,0 +1,5 @@
+" for switch-layout-tiling
+augroup switch_layout_tiling_tags
+  autocmd!
+  autocmd BufWritePost */switch-layout-tiling* silent !make tags > /dev/null 2>&1
+augroup END
