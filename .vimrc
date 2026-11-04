@@ -338,9 +338,21 @@ let g:tagbar_type_markdown = {
     \ 'sort': 0,
 \ }
 
+" Prevent lexima from inserting an extra space in Markdown task lists.
+call lexima#add_rule({
+      \ 'char': '<Space>',
+      \ 'at': '\[\%#\]',
+      \ 'input': '<Space>',
+      \ 'filetype': 'markdown'
+      \ })
+
 " + Ruby {{{2
 " ------------------------------------------------------------------------------
 au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
+
+" + Vim Script {{{2
+" ------------------------------------------------------------------------------
+au BufNewFile,BufRead *.vim set nowrap tabstop=2 shiftwidth=2
 
 " Local configuration {{{1
 let s:local_vimrc = expand('~/.vim/.vimrc.local')
