@@ -11,7 +11,9 @@ set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 " + Pre-process {{{2
 " ------------------------------------------------------------------------------
 " Using vim-plug as the plugin manager.
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let data_dir = has('nvim') ? stdpath('data') . '/site'
+      \ : has('win32') || has('win64') ? expand('~/vimfiles')
+      \ : expand('~/.vim')
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
@@ -118,13 +120,13 @@ Plug 'vim-autoformat/vim-autoformat'
 " ------------------------------------------------------------------------------
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\}
+      \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
+      \}
 let g:ale_fixers = {
-\   'javascript': ['eslint'],
-\   'typescript': ['eslint'],
-\}
+      \   'javascript': ['eslint'],
+      \   'typescript': ['eslint'],
+      \}
 let g:ale_fix_on_save = 1
 let g:ale_set_quickfix = 1
 
@@ -152,12 +154,12 @@ set cursorline
 
 " cursor shape.
 if has('vim_starting')
-    " insert mode (bar cursor shape)
-    let &t_SI .= "\e[6 q"
-    " normal mode (block cursor shape)
-    let &t_EI .= "\e[2 q"
-    " replace mode (underline cursor shape)
-    let &t_SR .= "\e[4 q"
+  " insert mode (bar cursor shape)
+  let &t_SI .= "\e[6 q"
+  " normal mode (block cursor shape)
+  let &t_EI .= "\e[2 q"
+  " replace mode (underline cursor shape)
+  let &t_SR .= "\e[4 q"
 endif
 
 " + Backup {{{2
@@ -324,19 +326,19 @@ au BufNewFile,BufRead *.md nnoremap <silent> <C-p> :PrevimOpen<CR>
 au Filetype markdown setl textwidth=0
 
 let g:tagbar_type_markdown = {
-    \ 'ctagstype': 'markdown',
-    \ 'ctagsbin' : '~/build/markdown2ctags/markdown2ctags.py',
-    \ 'ctagsargs' : '-f - --sort=yes',
-    \ 'kinds' : [
-        \ 's:sections',
-        \ 'i:images'
-    \ ],
-    \ 'sro' : '|',
-    \ 'kind2scope' : {
-        \ 's' : 'section',
-    \ },
-    \ 'sort': 0,
-\ }
+      \ 'ctagstype': 'markdown',
+      \ 'ctagsbin' : '~/build/markdown2ctags/markdown2ctags.py',
+      \ 'ctagsargs' : '-f - --sort=yes',
+      \ 'kinds' : [
+      \ 's:sections',
+      \ 'i:images'
+      \ ],
+      \ 'sro' : '|',
+      \ 'kind2scope' : {
+      \ 's' : 'section',
+      \ },
+      \ 'sort': 0,
+      \ }
 
 " Prevent lexima from inserting an extra space in Markdown task lists.
 call lexima#add_rule({
