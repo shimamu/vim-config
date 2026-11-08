@@ -38,18 +38,29 @@ endif
 " ++ Plugin for configurable status line {{{3
 " ------------------------------------------------------------------------------
 Plug 'itchyny/lightline.vim'
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fixMode']]
-      \ },
-      \ 'component_function': {
-      \   'fixMode': 'FixModeStatus'
-      \ }
-      \ }
+function! FixColumnStatus() abort
+  let l:cols = virtcol('.', 1)
+
+  return printf('%d:%d-%d', line('.'), l:cols[0], l:cols[1])
+endfunction
+
 function! FixModeStatus()
   return IMStatus('Jpfix')
 endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified', 'fixMode']],
+      \    'right': [ [ 'fixColumn' ],
+      \               [ 'percent' ],
+      \               [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fixMode': 'FixModeStatus',
+      \   'fixColumn': 'FixColumnStatus'
+      \ }
+      \ }
 
 " ++ Plugin for controling Input Method {{{3
 " ------------------------------------------------------------------------------
@@ -205,8 +216,8 @@ set wrap
 
 " ++ Text wrapping {{{3
 " ------------------------------------------------------------------------------
-"set textwidth=80
-"set formatoptions+=mM
+set textwidth=100
+set formatoptions+=mM
 
 " ++ Tab {{{3
 " ------------------------------------------------------------------------------
