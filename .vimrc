@@ -336,7 +336,7 @@ augroup END
 au BufNewFile,BufRead *.md nnoremap <silent> <C-p> :PrevimOpen<CR>
 
 " No text wrapping.
-au Filetype markdown setl textwidth=0
+" au Filetype markdown setl textwidth=0
 
 let g:tagbar_type_markdown = {
       \ 'ctagstype': 'markdown',
