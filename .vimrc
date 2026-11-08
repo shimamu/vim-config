@@ -297,6 +297,8 @@ nnoremap <silent> <SPACE> o<ESC>
 " Visual mode: copy selection to Wayland clipboard
 vnoremap <C-c> :w !wl-copy<CR><CR>
 
+" Leader key
+let mapleader = "\<Space>"
 
 " Filetypes {{{1
 " ==============================================================================
