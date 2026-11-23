@@ -371,8 +371,18 @@ au BufNewFile,BufRead *.rb  set nowrap tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.vim set nowrap tabstop=2 shiftwidth=2
 
 " Local configuration {{{1
+" Load local Vim configuration {{{2
 let s:local_vimrc = expand('~/.vim/.vimrc.local')
 
 if filereadable(s:local_vimrc)
   execute 'source' fnameescape(s:local_vimrc)
+endif
+
+" Load project-specific Vim macros recursively. {{{2
+let s:dev_dir = getcwd() . '/dev'
+
+if isdirectory(s:dev_dir)
+  for s:file in globpath(s:dev_dir, '**/*.vim', 0, 1)
+    execute 'source ' . fnameescape(s:file)
+  endfor
 endif
