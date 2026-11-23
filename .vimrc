@@ -310,6 +310,7 @@ vnoremap <C-c> :w !wl-copy<CR><CR>
 
 " Leader key
 let mapleader = "\<Space>"
+nnoremap <Space> <Nop>
 
 " Filetypes {{{1
 " ==============================================================================
